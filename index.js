@@ -5,19 +5,6 @@ const http = require("http").createServer(app);
 require('dotenv').config(); 
 const PORT = process.env.PORT || 8000;
 
-class muñeco{
-    constructor(){
-        this.precio = precio;
-        this.medida = medida;
-        this.color = color;
-        this.accesorios = accesorios;
-    }
-
-    metodo(){
-        
-    }
-}
-
 app.get("/muñeco", (req, res) => {
     res.send("Hola mundo.");
     let resultado = {
@@ -51,12 +38,10 @@ app.get("/accesorios", (req, res) => {
     res.json({'accesorios':resultado})
 })
 
-app.post("/signup", (req, res)=>{
-    res.end("Llamada post.")
-})
-
 app.post("/login", (req, res)=>{
-    res.end("Llamada post.")
+    let datos = req.body;
+    console.log(datos);
+    res.json({'respuesta':'usuarios reado?'})
 })
 
 http.listen(PORT,()=>{
