@@ -5,28 +5,21 @@ const http = require("http").createServer(app);
 const cors = require("cors");
 require('dotenv').config(); 
 const PORT = process.env.PORT || 8000;
+const userRoutes = require("./routes/user");
 
 const UsrController = require('./controllers/user');
 const AuthController = require('./controllers/auth');
 //const Middleware = require('./middleware/auth-middleware');
 const MailController = require('./controllers/mail')
 
-
-mongoose
-  .connect(uri, {useNewUrlParser:true, useUnifiedTopology: true})
-  .then(() => {
-    console.log("connedted");
-  })
-  .catch((err) => console.log(err))
-
-
 app.use(express.json());
 app.use(cors());
 
-
 //acceso a la DB
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.DB_URL;
+const uri = process.env.DB_URI;
+
+
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -49,6 +42,17 @@ async function run() {
 run().catch(console.dir);
 
 
+
+//mongo db connection
+mongoose
+  .connect(uri, {useNewUrlParser:true, useUnifiedTopology: true})
+  .then(() => {
+    console.log("connedted");
+  })
+  .catch((err) => console.log(err))
+
+
+
 app.get('/', (res,req) => {
   res.statusCode(200).json("Estoy funcionando");
 });
@@ -60,10 +64,8 @@ class muñeco{
 }
 
 
-
-
 //get de todos los usuarios
-app.get("/users", Middleware.verify, async (req, res) =>{
+app.get("/users", async (req, res) =>{
   let limit = req.query.limit;
   let offset = req.query.offset;
 
@@ -167,7 +169,7 @@ app.post("/auth/login", async (req, res) => {
 });
 
 //manda un email
-MailController.sendMail();
+//MailController.sendMail();     hay un problema en con  la autnetificacion en el controller mail y en el env
 
 
 app.get("/muñeco", (req, res) => {
@@ -203,7 +205,7 @@ app.get("/accesorios", (req, res) => {
 });
 
 app.post("/eleccion", (req, res)=>{
-    res.end('llamada post')
+    res.end('llamada post')//quitar
 });
 
 http.listen(PORT, () => {
