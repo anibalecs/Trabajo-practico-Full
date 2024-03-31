@@ -34,7 +34,7 @@ const getAllUsers = async (limit, offset) => {
 
 const getUser = async(id) => {
     const user = await Usr.findById(id);
-    // await Usr.findOne({ _id: req.params.id })
+    await Usr.findOne({ _id: req.params.id })
     return user;
 }
 
