@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const muñSchema = new Schema({
+const toySchema = new Schema({
 
     name:{
         type: String,
@@ -8,14 +8,18 @@ const muñSchema = new Schema({
     },
     animal:{
         type: String,
+        enum:['perro', 'conejo', 'oso', 'mapache', 'gato'],
         required: true
     },
     color:{
         type: String,
-        required: true
+        enum: ['rosa', 'amarillo', 'verde'],
+        required: true,
+        defaut: ['rosa']
     },
     accessories:{
         type: String,
+        enum: ['camiseta y pelota de futbol', 'guitarra electrica', 'notebook', 'sin accesorios'],
         required: true,
         default: ['ninguno']
     },
@@ -24,6 +28,8 @@ const muñSchema = new Schema({
         required: true
     }
 
+    
+});
 
-
-})
+const toySch = mongoose.model('toySch', toySchema);
+module.exports = toySch;

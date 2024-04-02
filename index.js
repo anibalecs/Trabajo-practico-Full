@@ -7,15 +7,18 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 const uri = process.env.DB_URI;
 const userRoutes = require("./routes/user");
+const toyRoutes = require("./routes/toy");
+const authRoutes = require("./routes/auth")
 
 const MailController = require('./controllers/mail')
-const AuthController = require('./controllers/auth');
 
 app.use(express.json());
 app.use(cors());
 
 //middleware
 app.use('/api', userRoutes);
+app.use('/api', toyRoutes);
+app.use('/api', authRoutes);
 
 
 //mongo db connection
@@ -31,27 +34,13 @@ app.get('/', (res,req) => {
   res.statusCode(200).json("Estoy funcionando");
 });
 
-app.post("/auth/login", async (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
 
-  try{
-    const result = await AuthController.login(email, password);
-    if(result){
-      res.status(200).json(result);
-    } else{
-      res.status(401).send("No puede estar aqui")
-    }
-  } catch(error){
-    res.status(500).send("Error");
-  }
-});
 
 //manda un email
 //MailController.sendMail();     hay un problema en con  la autnetificacion en el controller mail y en el env
 
 
-app.get("/muñeco", (req, res) => {
+/* app.get("/muñeco", (req, res) => {
     let resultado = {
        'Oso':{'precio':20500, 'medida':70, 'color':'', 'accesorios':''},
        'Conejo':{'precio':12000, 'medida':30, 'color':'', 'accesorios':''},
@@ -81,7 +70,7 @@ app.get("/accesorios", (req, res) => {
        '4':'sin accesorios'
     }
     res.json({'accesorios':resultado})
-});
+}); */
 
 app.post("/eleccion", (req, res)=>{
     res.end('llamada post')//quitar
