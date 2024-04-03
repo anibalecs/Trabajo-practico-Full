@@ -43,7 +43,6 @@ router.post("/users", async (req,res) => {
         res.status(409).send("El usuario ya existe");
       }
     } catch(error){
-      
       res.status(500).send("Error al crear el usuario.");
     }
 });

@@ -5,7 +5,7 @@ const addUser = async (name, lastname, email, isActive, password) => {
     let existUser = await Usr.findOne({email : email});
     console.log(existUser);
     if(!existUser){
-         const cryptoPass = require('crypto')
+         const cryptoPass = require('crypto')  //revisar
          .crearteHash('sha256')
          .update(password)
          .digest('hex');

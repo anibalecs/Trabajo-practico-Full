@@ -28,7 +28,12 @@ const toySchema = new Schema({
         required: true
     }
 
-    
+}, {timestamps: true}).set('toJSON',{   // revisar esto
+    transform: (document, object) => {
+        object.id = document.id;
+        delete object._id;
+    }
+ 
 });
 
 const toySch = mongoose.model('toySch', toySchema);

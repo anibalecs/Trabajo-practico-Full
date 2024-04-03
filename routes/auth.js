@@ -3,6 +3,7 @@ const router = express.Router();
 const AuthController = require('../controllers/auth')
 
 
+//login
 router.post("/auth/login", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
