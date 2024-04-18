@@ -3,17 +3,18 @@ const Usr = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 const login = async(email, password) => {
-    const cryptoPass = require('crypto')    //revisar
+    const cryptoPass = require('crypto') 
     .createHash('sha256')     
     .update(password)
     .digest('hex');
 
-    const result = await Usr.findOne({email: email, isActive: true, password: cryptoPass})
+const result = await Usr.findOne({email: email, isActive: true, password: cryptoPass})
 
     if(result){
-        jwt.sign('payload','secret_key','options')
-        const token = jwt.sign({ foo: 'bar' }, 'secret_key');
-        token = "fgdgbrfeer6g1df23g86ef2gs";
+        const payload = {
+            email: result.email
+        }
+        const token = jwt.sign(payload, process.env.SECRET_KEY_TOKEN, {expiresIn: "60m"});
         return token;
     }
     return null;

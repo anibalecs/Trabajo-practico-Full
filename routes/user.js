@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const UsrController = require('../controllers/user');
+const {verifyToken} = require('../middleware/verifyToken');
 
 
 //get de todos los usuarios
-router.get("/users", async (req, res) =>{
+router.get("/private/users", verifyToken, async (req, res) =>{
     let limit = req.query.limit;
     let offset = req.query.offset;
   
@@ -17,7 +18,7 @@ router.get("/users", async (req, res) =>{
   });
   
 //get info de un usuario
-router.get("/users/:id", async (req, res) => {
+router.get("/private/users/id", verifyToken, async (req, res) => {
     let userId = req.params.id;
     try{
       user = await UsrController.getUser(userId);
@@ -29,11 +30,7 @@ router.get("/users/:id", async (req, res) => {
   
 //crear nuevo usuario
 router.post("/users", async (req,res) => {
-    let name = req.body.name;
-    let lastname = req.body.lastname;
-    let email = req.body.email;
-    let isActive = req.body.isActive;
-    let password = req.body.password;
+    let {name, lastname, email, isActive, password} = req.body;
   
     try{
       const result = await UsrController.addUser(name, lastname, email, isActive, password);
@@ -48,7 +45,7 @@ router.post("/users", async (req,res) => {
 });
   
 //modifico un usuario 
-router.put("/users/:id", async (req, res) => {
+router.put("/private/users/id", verifyToken, async (req, res) => {
     const user = {_id: req.params.id, ...req.body};
     try{
       const result = await UsrController.editUser(user);
@@ -62,9 +59,10 @@ router.put("/users/:id", async (req, res) => {
     }
 });
   
-router.put("/users/:id/roles", async (req, res) => {
+//roles
+router.put("/private/users/id/roles", verifyToken, async (req, res) => {
     const roles = req.body.roles;
-    //const user = { _id: req.params.id, ...req.body };
+    const user = { _id: req.params.id, ...req.body };
     try{
       const result = await UsrController.editRoles(roles, req.params.id);
       if(result){
@@ -78,7 +76,7 @@ router.put("/users/:id/roles", async (req, res) => {
 });
 
 //elimino un usuario
-router.delete("/users/:id", async(req, res) => {
+router.delete("/private/users/id", verifyToken, async(req, res) => {
     try{
       const result = await UsrController.deleteUser(req.params.id);
       if(result){

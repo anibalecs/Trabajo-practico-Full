@@ -15,25 +15,24 @@ const toySchema = new Schema({
         type: String,
         enum: ['rosa', 'amarillo', 'verde'],
         required: true,
-        defaut: ['rosa']
+        default: ['rosa']
     },
     accessories:{
         type: String,
         enum: ['camiseta y pelota de futbol', 'guitarra electrica', 'notebook', 'sin accesorios'],
         required: true,
-        default: ['ninguno']
+        default: ['sin accesorios']
     },
     price:{
         type: Number,
         required: true
     }
 
-}, {timestamps: true}).set('toJSON',{   // revisar esto
+}, {timestamps: true}).set('toJSON',{  
     transform: (document, object) => {
         object.id = document.id;
         delete object._id;
     }
- 
 });
 
 const toySch = mongoose.model('toySch', toySchema);
