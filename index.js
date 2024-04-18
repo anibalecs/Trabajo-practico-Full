@@ -28,7 +28,7 @@ mongoose
   .catch((err) => console.log(err))
 
   
-app.get('/', (res,req) => {
+app.get('/', (res, req) => {
   res.statusCode(200).json("Estoy funcionando");
 });
 

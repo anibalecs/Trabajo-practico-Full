@@ -27,6 +27,9 @@ const usrSchema = new Schema({
     password:{
         type: String,
         required: true
+    },
+    plushToys:{
+        type: Array
     }
 
 }, {timestamps: true}).set('toJSON',{

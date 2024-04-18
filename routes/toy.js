@@ -6,8 +6,9 @@ const {verifyToken} = require('../middleware/verifyToken')
 //crear nuevo toy
 router.post("/private/toys", verifyToken, async (req, res) => {
     let {name, animal, color, accessories, price} = req.body;
+    const userId = req.userId;
     try{
-        const result = await ToyController.addToy(name, animal, color, accessories, price);
+        const result = await ToyController.addToy(name, animal, color, accessories, price, userId);
         if(result){
             res.status(201).send("toy creado correctamente");
         } 
@@ -21,10 +22,10 @@ router.post("/private/toys", verifyToken, async (req, res) => {
 router.get("/private/toys/:id", verifyToken, async (req, res) => {
     let toyId = req.params.id;
     try{
-        toy = await ToyController.getToy(toyId);
+        const toy = await ToyController.getToy(toyId);
         res.status(200).json(toy);
     } catch(error){
-        console.log(error);
+        console.log(error); 
         res.status(500).send("Error");
     }
 });
@@ -53,5 +54,16 @@ router.get("/ranking/toys", async (req, res) => {
     }
 });
 
+//get todos los toys de un usuario
+router.get("/private/allUsr/toys", verifyToken, async (req, res) => {   // revisar si tengo que ingresar el id o vasta con trarlo del token
+    const userId = req.userId; 
+    try{ 
+        const toys = await ToyController.getAllToysUsr(userId);
+        res.status(200).json(toys);
+    } catch(error){
+        console.log(error);
+            res.status(500).send("Error")
+    }
+    }); 
 
 module.exports = router;

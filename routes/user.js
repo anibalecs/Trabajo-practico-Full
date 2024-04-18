@@ -18,7 +18,7 @@ router.get("/private/users", verifyToken, async (req, res) =>{
   });
   
 //get info de un usuario
-router.get("/private/users/id", verifyToken, async (req, res) => {
+router.get("/private/users/:id", verifyToken, async (req, res) => {
     let userId = req.params.id;
     try{
       user = await UsrController.getUser(userId);
