@@ -55,7 +55,7 @@ router.get("/ranking/toys", async (req, res) => {
 });
 
 //get todos los toys de un usuario
-router.get("/private/allUsr/toys", verifyToken, async (req, res) => {   // revisar si tengo que ingresar el id o vasta con trarlo del token
+router.get("/private/allUsr/toys", verifyToken, async (req, res) => {
     const userId = req.userId; 
     try{ 
         const toys = await ToyController.getAllToysUsr(userId);

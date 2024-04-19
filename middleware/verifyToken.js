@@ -9,7 +9,6 @@ const verifyToken = async (req, res, next) =>{
     }
     try{
         const decode =  jwt.verify(token, process.env.SECRET_KEY_TOKEN);
-        //req.result = decode;
         const user = await Usr.findOne({email: decode.email});
         req.userId = user._id;
         next();
