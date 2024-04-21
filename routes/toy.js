@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ToyController = require('../controllers/toy');
-const {verifyToken} = require('../middleware/verifyToken')
+const {verifyToken} = require('../middleware/verifyToken');
 
 //crear nuevo toy
 router.post("/private/toys", verifyToken, async (req, res) => {
@@ -37,9 +37,10 @@ router.delete("/private/toys/:id", verifyToken, async (req, res) => {
         if(result){
             res.status(200).send("Toy eliminado")
         } else{
-            res.status(404).send("No se pudo eliminar el toy")
+            res.status(404).send("No se pudo eliminar el toy")           //revisar
         }
     } catch(error){
+        console.log(error);
         res.status(500).send("Error")
     }
 });

@@ -1,7 +1,7 @@
 require('mongoose');
 const Usr = require('../models/user');
 
-const addUser = async (name, lastname, email, isActive, password) => {
+const addUser = async (name, lastname, email, isActive, roles, password) => {
     let existUser = await Usr.findOne({email : email});
     console.log(existUser);
     if(!existUser){
@@ -11,11 +11,12 @@ const addUser = async (name, lastname, email, isActive, password) => {
             .digest('hex');
 
         const usr = new Usr({
-            name : name,
-            lastname : lastname,
-            email : email,
+            name: name,
+            lastname: lastname,
+            email: email,
             isActive : isActive,
-            password : cryptoPass
+            roles: roles,
+            password: cryptoPass
         });
 
         let user = await usr.save();
@@ -34,7 +35,6 @@ const getAllUsers = async (limit, offset) => {
 
 const getUser = async(id) => {
     const user = await Usr.findById(id);
-    await Usr.findOne({ _id: req.params.id })
     return user;
 }
 

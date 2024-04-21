@@ -20,8 +20,9 @@ const usrSchema = new Schema({
         required: true
     },
     roles:{
-        type: Array,
+        type: [String],
         required: true,
+        enum: ['user', 'admin'],
         default: ['user']
     },
     password:{

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Usr = require('../models/user');
 
-const verifyToken = async (req, res, next) =>{
+const verifyToken = async (req, res, next) => {
     let token = req.headers['authorization'];
     token = token.replace("Bearer ", "");
     if(!token){
@@ -11,9 +11,9 @@ const verifyToken = async (req, res, next) =>{
         const decode =  jwt.verify(token, process.env.SECRET_KEY_TOKEN);
         const user = await Usr.findOne({email: decode.email});
         req.userId = user._id;
+        req.user = user;
         next();
     } catch(error){
-        console.log(error);
         res.status(403).send("No autorizado");
     }     
 }
