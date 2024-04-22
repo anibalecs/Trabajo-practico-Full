@@ -28,7 +28,7 @@ router.get("/private/user/:id", verifyToken, verifyAdmin, async (req, res) => {
     }
 });
 
-// get de tu usario
+// get info de tu usario
 router.get("/private/myUser", verifyToken, async(req, res) => {
    const userId = req.userId;
   try{
