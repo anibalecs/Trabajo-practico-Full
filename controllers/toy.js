@@ -1,7 +1,7 @@
 require('mongoose');
+const { default: mongoose } = require('mongoose');
 const Toy = require('../models/toy');
 const Usr = require('../models/user');
-const mongoose = require("mongoose");
 
 const addToy = async (name, animal, color, accessories, price, userId) => {
         const toy = new Toy({
@@ -30,12 +30,13 @@ const getToy = async (id) =>{
 }
 
 const deleteToy = async (id, userId) => {
-    const objectId = new mongoose.Types.ObjectId(id);
-    const result = await Toy.findByIdAndDelete(objectId);
-    await Usr.updateOne({_id: userId}, {
-        $pull:{plushToys: id}
-    });
-    return result;
+        id = id.replace("\n", "");
+        const result = await Toy.findByIdAndDelete(id);
+        const objectId = new mongoose.Types.ObjectId(id);
+        await Usr.findByIdAndUpdate(userId, {
+            $pull: { plushToys: objectId }
+        });
+        return result;  
 }
 
 const bringRanking = async () => {

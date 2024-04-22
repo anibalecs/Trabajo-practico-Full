@@ -26,7 +26,7 @@ mongoose
 
   
 app.get('/', (res, req) => {
-  res.statusCode(200).json("Estoy funcionando");
+  res.statusCode(200).json("Servidor funcionando");
 });
 
 app.listen(PORT, () => {

@@ -32,12 +32,14 @@ router.get("/private/toys/:id", verifyToken, async (req, res) => {
 
 //eliminar toy
 router.delete("/private/toys/:id", verifyToken, async (req, res) => {
+    const userId = req.userId;
     try{
-        const result = await ToyController.deleteToy(req.params);
+        const result = await ToyController.deleteToy(req.params.id, userId);
         if(result){
+            console.log(result);
             res.status(200).send("Toy eliminado")
         } else{
-            res.status(404).send("No se pudo eliminar el toy")           //revisar
+            res.status(404).send("No se pudo eliminar el toy")     
         }
     } catch(error){
         console.log(error);
