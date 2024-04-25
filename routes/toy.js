@@ -13,7 +13,6 @@ router.post("/private/toys", verifyToken, async (req, res) => {
             res.status(201).send("toy creado correctamente");
         } 
     } catch(error){
-        console.log(error);
         res.status(500).send("Error al crear toy.");
     }
 });
@@ -25,7 +24,6 @@ router.get("/private/toys/:id", verifyToken, async (req, res) => {
         const toy = await ToyController.getToy(toyId);
         res.status(200).json(toy);
     } catch(error){
-        console.log(error); 
         res.status(500).send("Error");
     }
 });
@@ -42,7 +40,6 @@ router.delete("/private/toys/:id", verifyToken, async (req, res) => {
             res.status(404).send("No se pudo eliminar el toy")     
         }
     } catch(error){
-        console.log(error);
         res.status(500).send("Error")
     }
 });
