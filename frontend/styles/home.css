@@ -10,8 +10,41 @@
     --lg: 18px;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 nav{
-    background-color: #ACD9B2;
+    background-color: var(--hospital-green);
+    height:65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav button{
+     background-color: var(--hospital-green);
+    border-color: var(--white);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 10px;
+    height: 40px;
+    padding: 0 10px; 
+    font-weight: bold;
+
+}
+
+nav ul{
+    width: 30%;
+    list-style: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     height: 70px;
-    
+    align-items: center;
 }
