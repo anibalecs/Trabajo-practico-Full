@@ -12,7 +12,6 @@ function Ranking(){
               <div className="card-body">
                 <h5 className="card-title">Product 1</h5>
                 <p className="card-text">Description of product 1.</p>
-                <a href="#" className="btn btn-success">View Details</a>
               </div>
             </div>
           </div>
@@ -22,7 +21,6 @@ function Ranking(){
               <div className="card-body">
                 <h5 className="card-title">Product 2</h5>
                 <p className="card-text">Description of product 2.</p>
-                <a href="#" className="btn btn-success">View Details</a>
               </div>
             </div>
           </div>
@@ -32,7 +30,6 @@ function Ranking(){
               <div className="card-body">
                 <h5 className="card-title">Product 3</h5>
                 <p className="card-text">Description of product 3.</p>
-                <a href="#" className="btn btn-success">View Details</a>
               </div>
             </div>
           </div>
