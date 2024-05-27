@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, /*useEffect*/ } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUser, FaShoppingCart, FaBoxOpen } from 'react-icons/fa';
 import Ranking from '../Ranking/Ranking';
@@ -11,6 +11,7 @@ import notebook from '../../assets/accessories/notebook.jpg';
 import electricGuitar from '../../assets/accessories/electricGuitar.jpg';
 import TshitBall from '../../assets/accessories/T-shirtBall.png';
 import './Dashboard.css';
+/* import { response } from 'express'; */
 
 const colors = [
   { id: 1, name: 'Pink' },
@@ -22,6 +23,8 @@ function Dashboard() {
   const [activeSection, setActiveSection] = useState(null);
   const [selectedAnimal, setSelectedAnimal] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  // const [userProfile, setUserProfile] = useState({name: '', lastName: '', email:''});
+  // const [error, setError] = useState('');
 
   const handleButtonClick = (section) => {
     setActiveSection(activeSection === section ? null : section);
@@ -35,9 +38,37 @@ function Dashboard() {
     setSelectedColor(colorId);
   };
 
+  /* useEffect(() =>{
+    const fetchUserProfile = async ()=>{
+      const token = localStorage.getItem('token');
+      if (token) {
+        fetch('localhost:8080/api/private/myUser', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        if(response.ok){
+          const data = await response.json();
+          setUserProfile(data);
+        }else{
+          throw new error('Failed to fetch user data');
+        }
+      }else{
+        console.error('No token found in localStorage');
+        setError('No token found, please login again');
+      }
+    }
+    if(activeSection === 'profile'){
+      fetchUserProfile();
+    }
+  }, [activeSection]);  */
+
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4">The stuffed animal workshop</h1>
+      {/* {error && <div className='alert alert-danger'>{error}</div>} */}
       <Ranking />
       <div className="row">
         <div className="col-md-4 mb-4">
@@ -52,9 +83,9 @@ function Dashboard() {
               {activeSection === 'profile' && (
                 <div className="mt-3">
                   <div className="text-start">
-                    <p><strong>Name:</strong> aca traer el nombre del usuario</p>
-                    <p><strong>Last name:</strong> traer apellido</p>
-                    <p><strong>Email:</strong> traer email</p>
+                    {/* <p><strong>Name:</strong>{userProfile.name}</p>
+                    <p><strong>Last name:</strong>{userProfile.lastName}</p>
+                    <p><strong>Email:</strong>{userProfile.email}</p> */}
                   </div>
                   <Link className="btn btn-success mt-3" to="/editProfile" role="button">Edit Profile</Link>
                 </div>
@@ -92,6 +123,7 @@ function Dashboard() {
                   </section>
 
                   <h5>Color</h5>
+                  <section>
                   <ul className="list-unstyled d-flex flex-column align-items-start">
                     {colors.map((color) => (
                       <li key={color.id} className="d-flex align-items-center mb-2">
@@ -106,6 +138,7 @@ function Dashboard() {
                       </li>
                     ))}
                   </ul>
+                  </section>
 
                   <h5>Accessories</h5>
                   <section className="my-5">
@@ -121,6 +154,7 @@ function Dashboard() {
                       </div>
                     ))}
                   </section>
+
                   <button className="btn btn-success">Add</button>
                 </div>
               )}

@@ -17,20 +17,17 @@ function Home() {
           <div className="row">
             <div className="col-md-4">
               <blockquote className="blockquote">
-                <p className="mb-0">Best plush toys ever! My kids love them!</p>
-                <footer className="blockquote-footer">Jane Doe</footer>
+                <footer className="blockquote-footer">Excellent stuffed animals, of the best quality! My kids love them! <br/>Juan Perez.</footer>
               </blockquote>
             </div>
             <div className="col-md-4">
               <blockquote className="blockquote">
-                <p className="mb-0">High quality and super cute. Highly recommend!</p>
-                <footer className="blockquote-footer">John Smith</footer>
+                <footer className="blockquote-footer">High quality and super cute. Highly recommended!  <br/>Ana Fernandez.</footer>
               </blockquote>
             </div>
             <div className="col-md-4">
               <blockquote className="blockquote">
-                <p className="mb-0">Great customer service and fast shipping.</p>
-                <footer className="blockquote-footer">Mary Johnson</footer>
+                <footer className="blockquote-footer">Great customer service and fast shipping. <br/>Mary Johnson.</footer>
               </blockquote>
             </div>
           </div>

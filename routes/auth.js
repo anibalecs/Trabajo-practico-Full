@@ -12,7 +12,7 @@ router.post("/auth/login", async (req, res) => {
       if(result){
         res.status(200).json(result);
       } else{
-        res.status(401).send("No existe el usuario con esta combinacion email-password")
+        res.status(401).send("The user with this email-password combination does not exist")
       }
     } catch(error){
       res.status(500).send("Error");
