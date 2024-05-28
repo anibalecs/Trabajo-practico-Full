@@ -6,6 +6,7 @@ import EditProfile from "./components/EditProfile/EditProfile";
 import Dashboard from "./components/Home/Dashboard";
 import AboutUs from "./components/Pages/AboutUs";
 import Contact from "./components/Pages/Contact";
+import DeleteUser from "./components/DeleteUser/DeleteUser";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />}/>
         <Route path="/editProfile" element={<EditProfile />}/>
+        <Route path="/DeleteUser" element={<DeleteUser />}/>
       </Routes>
   );
 }

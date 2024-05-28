@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async(e) =>{
-    e.preventDefault();      //evita que se envie de fomra convencional el formulario, evita que la pag se recargue.
+    e.preventDefault();      //evita que se envie de forma convencional el formulario, evita que la pag se recargue.
     try{
       const response = await fetch('http://localhost:8080/api/auth/login', { 
         method: 'POST',
@@ -21,7 +21,7 @@ function Login() {
 
       if(response.ok){
         const token = await response.json();
-        localStorage.setItem('token', token);  //guarda token en el localStorage
+        localStorage.setItem('token', token);
         navigate('/dashboard');
       }else{
         const errorMessage = await response.text();
