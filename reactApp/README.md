@@ -1,6 +1,6 @@
 -Para levantar  ubicarse en la carpeta reactApp y ejecutar npm run dev.
 
--Manejo de rutas con react router y manejo de consultas http con feth, axios solo utilizado para vencimiento de jwt.
+-Manejo de rutas con react router y manejo de consultas http con feth, no axios.
 
 # React + Vite
 
