@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import dog from '../../assets/plushToys/peluchePerro.jpg';
-import raccon from '../../assets/plushToys/pelucheMapache.webp';
+import racoon from '../../assets/plushToys/pelucheMapache.webp';
 import rabbit from '../../assets/plushToys/pelucheConejo.webp';
 import cat from '../../assets/plushToys/pelucheGato.jpg';
 import bear from '../../assets/plushToys/pelucheOso.jpg';
@@ -11,7 +11,7 @@ function Ranking(){
 
   const imageMap = {
     perro: dog,
-    mapache: raccon,
+    mapache: racoon,
     conejo: rabbit,
     gato: cat,
     oso: bear

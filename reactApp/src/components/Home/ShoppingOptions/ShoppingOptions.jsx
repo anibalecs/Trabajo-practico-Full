@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import dog from '../../../assets/plushToys/peluchePerro.jpg';
-import raccon from '../../../assets/plushToys/pelucheMapache.webp';
+import racoon from '../../../assets/plushToys/pelucheMapache.webp';
 import rabbit from '../../../assets/plushToys/pelucheConejo.webp';
 import cat from '../../../assets/plushToys/pelucheGato.jpg';
 import bear from '../../../assets/plushToys/pelucheOso.jpg';
@@ -102,7 +102,7 @@ function ShoppingOptions(){
                   <h5>Plush animals</h5>
                   <section className="my-5">
                     <div className="row">
-                      {[{ img: dog, name: 'perro' }, { img: raccon, name: 'mapache' }, { img: rabbit, name: 'conejo' }, { img: cat, name: 'gato' }, { img: bear, name: 'oso' }].map((animal) => (
+                      {[{ img: dog, name: 'perro' }, { img: racoon, name: 'mapache' }, { img: rabbit, name: 'conejo' }, { img: cat, name: 'gato' }, { img: bear, name: 'oso' }].map((animal) => (
                         <div className="col-12" key={animal.name}>
                           <div className={`card mb-4 ${selectedAnimal === animal.name ? 'border-success' : ''}`}>
                             <img src={animal.img} className="card-img-top product-image" alt={animal.name} />
