@@ -86,10 +86,6 @@ function EditProfile(){
                                             <label htmlFor="email" className="form-label">Email</label>
                                             <input type="email" className="form-control" id="email" name="email" placeholder={formData.email} onChange={handleChange}/>
                                         </div>
-                                        {/* <div className="mb-3">
-                                            <label htmlFor="password" className="form-label">Password</label>
-                                            <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password to confirm" value={formData.password} onChange={handleChange} required/>
-                                        </div> */}
                                         <button type="submit" className="btn btn-success w-100">Update Profile</button>
                                     </form>
                                 </div>

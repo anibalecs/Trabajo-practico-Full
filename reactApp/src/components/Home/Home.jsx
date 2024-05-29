@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Ranking from '../Ranking/Ranking';
 function Home() {
   return(
@@ -9,7 +8,6 @@ function Home() {
           <p className="lead">Your best option for the cutest and most tender customizable stuffed animals!</p>
           <hr className="my-4" />
           <p>Explore our wide range of products and find your new favorite plush friend today.</p>
-          <Link className="btn btn-success" to="/login" role='button'>Shop Now</Link>
         </header>
         <Ranking/>
         <section className="my-5">
