@@ -1,5 +1,7 @@
 import Ranking from '../Ranking/Ranking';
+
 function Home() {
+
   return(
     <>
       <div className="container mt-5">

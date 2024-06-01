@@ -4,6 +4,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 function Layout() {
   const location = useLocation();
   const showLoginButton = location.pathname !== "/dashboard"  //quita el boton login cuando esta en dashboard
+  const isAuthenticated = !!localStorage.getItem('token');
 
   return (
     <>
@@ -20,14 +21,19 @@ function Layout() {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
+                </li>
+              )}
               <li className="nav-item">
-                <a className="nav-link" href="/aboutUs">About us</a>
+                <Link className="nav-link" to="/aboutUs">About us</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">Contact</a>
+                <Link className="nav-link" to="/contact">Contact</Link>
               </li>
             </ul>
-            {showLoginButton && (
+            {!isAuthenticated && showLoginButton && (
               <form className="d-flex" role="button">
               <Link className="btn btn-outline-success" type="button"  to="/login">Log in</Link>
             </form>

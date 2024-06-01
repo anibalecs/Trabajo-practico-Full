@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 
@@ -11,6 +12,12 @@ function Profile(){
     const handleButtonClick = (section) => {
       setActiveSection(activeSection === section ? null : section);
     };
+
+    const navigate = useNavigate();
+    const handleLogout = ()=>{
+      localStorage.removeItem('token');
+      navigate('/');
+    }
    
   useEffect(() =>{
     const fetchUserProfile = async ()=>{
@@ -58,6 +65,7 @@ function Profile(){
                     <p><strong>Last name: </strong>{userProfile.lastname}</p>
                     <p><strong>Email: </strong>{userProfile.email}</p> 
                   </div>
+                  <button className="btn btn-success mt-3 me-2" onClick={handleLogout}>Log out</button>
                   <Link className="btn btn-success mt-3 me-2" to="/editProfile" role="button">Edit Profile</Link>
                   <Link className="btn btn-danger mt-3" to="/DeleteUser" role="button">Delete user</Link>
                 </div>
