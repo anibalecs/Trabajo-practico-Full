@@ -25,7 +25,7 @@ function Ranking(){
           const data = await response.json();
           setRanking(data);
         }else{
-          throw new Error('Failed to fetch ranking data');
+          setError('Failed to fetch ranking data');
         }
       }catch(error){
         setError(error.message);
@@ -41,7 +41,7 @@ function Ranking(){
             {error && <div className='alert alert-danger'>{error}</div>}
             <div className="row">
               {ranking.map((product) => (
-                <div className="col-md-4" key={product.id}>
+                <div className="col-md-4" key={product._id}>
                   <div className="card mb-4 h-100">
                     <div className="image-container">
                       <img src={imageMap[product._id]} className="card-img-top ranking-image" alt={product._id}/>

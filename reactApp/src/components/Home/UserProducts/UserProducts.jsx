@@ -40,7 +40,7 @@ function UserProducts(){
           if(response.ok){
             setUserToys(userToys.filter(toy => toy.id !== toyId));
           }else{
-            setError('Failed to delete toy');
+            throw new error('Failed to delete toy');
           }
         }catch(error){
           setError('Faled to delete toy');

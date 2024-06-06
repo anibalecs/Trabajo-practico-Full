@@ -1,5 +1,8 @@
 import logo from '../../assets/osoLogo.png';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 function Layout() {
   const location = useLocation();

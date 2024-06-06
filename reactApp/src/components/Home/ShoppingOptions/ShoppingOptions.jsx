@@ -18,10 +18,10 @@ const colors = [
 function ShoppingOptions(){
 
     const [activeSection, setActiveSection] = useState(null);
-    const [selectedAnimal, setSelectedAnimal] = useState(null);
-    const [selectedColor, setSelectedColor] = useState(null);
-    const [selectedAccessory, setSelectedAccessory] = useState(null);
-    const [plushName, setPlushName] = useState(null);
+    const [selectedAnimal, setSelectedAnimal] = useState('');
+    const [selectedColor, setSelectedColor] = useState('');
+    const [selectedAccessory, setSelectedAccessory] = useState('');
+    const [plushName, setPlushName] = useState('');
     const [showSummary, setShowSummary] = useState(false);
     const [error, setError] = useState('');
   
@@ -56,7 +56,7 @@ function ShoppingOptions(){
           return;
         }
         const toyData = {
-          name: plushName,
+          name: plushName || 'Pepito',
           animal: selectedAnimal,
           color: selectedColor,
           accessories: selectedAccessory,
@@ -151,7 +151,7 @@ function ShoppingOptions(){
                   <form onSubmit={(e)=> e.preventDefault()}>
                     <div className="mb-3">
                       <label htmlFor="plushName" className="form-label">Plush name (mandatory)</label>
-                      <input type="text" className="form-control" id="plushName" placeholder="Pepe" value={plushName} onChange={handleName}/>
+                      <input type="text" className="form-control" id="plushName" placeholder="Pepito" value={plushName} onChange={handleName}/>
                     </div>
                   </form>
                   <button className="btn btn-success" onClick={handleCreateClick}>Add</button>
@@ -170,7 +170,7 @@ function ShoppingOptions(){
                     <button type="button" className="btn-close" aria-label="Close" onClick={handleCancel}></button>
                   </div>
                   <div className="modal-body">
-                    <p><strong>Name:</strong> {plushName}</p>
+                    <p><strong>Name:</strong> {plushName || 'Pepito'}</p>
                     <p><strong>Animal:</strong> {selectedAnimal}</p>
                     <p><strong>Color:</strong> {selectedColor}</p>
                     <p><strong>Accessories:</strong> {selectedAccessory}</p>

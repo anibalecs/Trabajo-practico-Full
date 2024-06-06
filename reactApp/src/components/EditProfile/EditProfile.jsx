@@ -32,7 +32,7 @@ function EditProfile(){
     fetchUserProfile();
     }, []);
     
-    const handleChange = (e) => {  //actualiza el estado del formulario a medida que user escribe
+    const handleChange = (e) => {  
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -42,7 +42,7 @@ function EditProfile(){
     
     const handleSubmit = async(e) => {    
         e.preventDefault();  
-        //maneja envio de formulario y logica actualizacion de perfil
+        
         try{
             const response = await fetch('http://localhost:8080/api/private/users', {
                 method: 'PUT',
