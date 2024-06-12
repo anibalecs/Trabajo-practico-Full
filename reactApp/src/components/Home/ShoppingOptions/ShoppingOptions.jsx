@@ -150,7 +150,7 @@ function ShoppingOptions(){
                   </section>
                   <form onSubmit={(e)=> e.preventDefault()}>
                     <div className="mb-3">
-                      <label htmlFor="plushName" className="form-label">Plush name (mandatory)</label>
+                      <label htmlFor="plushName" className="form-label">Plush name</label>
                       <input type="text" className="form-control" id="plushName" placeholder="Pepito" value={plushName} onChange={handleName}/>
                     </div>
                   </form>
